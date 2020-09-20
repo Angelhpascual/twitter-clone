@@ -26,20 +26,15 @@ function Feed() {
         {/* Post */}
         {posts.map((post) => (
           <Post
-            displayName={posts.displayName}
-            username={posts.username}
-            verified={posts.verified}
-            text={posts.text}
-            image={posts.image}
-            avatar={posts.avatar}
+            key={post.text}
+            displayName={post.displayName}
+            username={post.username}
+            verified={post.verified}
+            text={post.text}
+            image={post.image}
+            avatar={post.avatar}
           />
         ))}
-
-        {/* Post */}
-        {/* Post */}
-        {/* Post */}
-        {/* Post */}
-        {/* Post */}
       </div>
       {/* Header */}
     </div>
