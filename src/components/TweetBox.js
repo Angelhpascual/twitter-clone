@@ -10,16 +10,22 @@ function TweetBox() {
 
   const sendTweet = (e) => {
     e.preventDefault();
-    db.collection("posts").add({
-      avatar:
-        "https://avatars3.githubusercontent.com/u/15203307?s=460&u=bded44228f24cdbb112a59bfbadad08e02002c6f&v=4",
-      displayName: "angelpascual",
-      image: tweetImage,
-      text: tweetMessage,
-      username: "angelhernandev",
-      verified: true,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+
+    if (tweetMessage.trim() === "" || tweetImage.trim() === "") {
+      return;
+    } else {
+      db.collection("posts").add({
+        avatar:
+          "https://avatars3.githubusercontent.com/u/15203307?s=460&u=bded44228f24cdbb112a59bfbadad08e02002c6f&v=4",
+        displayName: "angelpascual",
+        image: tweetImage,
+        text: tweetMessage,
+        username: "angelhernandev",
+        verified: true,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    }
+
     setTweetImage("");
     setTweetMessage("");
   };
