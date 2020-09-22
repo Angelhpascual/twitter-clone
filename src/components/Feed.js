@@ -8,12 +8,12 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
-      setPosts(snapshot.docs.map((doc) => doc.data()))
-    );
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(snapshot.docs.map((doc) => doc.data()))
+      );
   }, []);
-
-  console.log(posts);
 
   return (
     <div className="feed">
@@ -33,10 +33,10 @@ function Feed() {
             text={post.text}
             image={post.image}
             avatar={post.avatar}
+            timestamp={post.timestamp}
           />
         ))}
       </div>
-      {/* Header */}
     </div>
   );
 }

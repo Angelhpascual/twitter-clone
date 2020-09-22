@@ -7,7 +7,15 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import React from "react";
 import "./Post.css";
 
-function Post({ displayName, username, verified, text, image, avatar }) {
+function Post({
+  displayName,
+  username,
+  verified,
+  text,
+  image,
+  avatar,
+  timestamp,
+}) {
   return (
     <div className="post">
       <div className="post__avatar">
@@ -22,6 +30,9 @@ function Post({ displayName, username, verified, text, image, avatar }) {
               <span className="post__headerSpecial">
                 {verified && <VerifiedUserIcon className="post__badge" />}@
                 {username}
+                <span className="post__timestamp">
+                  &nbsp; · &nbsp;{new Date(timestamp?.toDate()).toUTCString()}
+                </span>
               </span>
             </h3>
           </div>
